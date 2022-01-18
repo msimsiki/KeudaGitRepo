@@ -5,11 +5,11 @@ function translate()
   {
     document.getElementById('a5').innerHTML = "Hei Maailma";
   }
-  else if (choice = 'se')
+  else if (choice == 'se')
   {
     document.getElementById('a5').innerHTML = "Hej Världen";
   }
-  else if (choice = 'es')
+  else if (choice == 'es')
   {
     document.getElementById('a5').innerHTML = "Hola Mundo";
   }
