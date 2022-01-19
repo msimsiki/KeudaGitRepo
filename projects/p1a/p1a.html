@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Sign me up buddy</title>
+    <script src="p1a.js"></script>
+  </head>
+  <body>
+    <form id="signup" action="p1a.html">
+      <h1>Sign Up</h1>
+      <label>Username</label><br>
+      <input type="text" id="userid"><br>
+      <label>Password</label><br>
+      <input type="password" id="pw"><br>
+      <p>This info must be hidden from the user. (Dunno why?)</p>
+      <label>What kind of PC user are you?</label><br>
+      <input type="radio" id="rd1">24/7. I'm a gamer.<br>
+      <input type="radio" id="rd2">I'm a nerd. I use for study.<br>
+      <input type="radio" id="rd3">Tech will be end of us. I don't use.<br><br>
+      <label>What you think about the page?</label><br>
+      <input type="checkbox" id="cb1">You call this a page?!<br>
+      <input type="checkbox" id="cb2">Fair enough!<br>
+      <input type="checkbox" id="cb3">Well, it works. Doesn't it?<br><br>
+      <label>What is the best lessons for you in Keuda?</label><br>
+      <select>
+        <option style="display:none" value="none"></option>
+        <option id="op1">Programming</option>
+        <option id="op2">Math</option>
+        <option id="op3">Languages</option>
+        <option id="op4">Gym</option>
+      </select><br><br>
+      <label>How would you develop your own page?</label><br>
+      <textarea id=dev rows="5" cols="50"></textarea><br>
+      <input type="button" onclick="send()" value="Send">
+    </form>
+  </body>
+</html>
