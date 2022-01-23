@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <script src="p1b.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <h1 id="title">Sign Up</h1>
+    <p id="description">Hello there! Tell us something about yourself.</p>
+    <br />
+    <form
+      id="myForm"
+      name="myForm"
+      action="p1b.html"
+      onsubmit="return validateForm(this)"
+      method="post"
+    >
+      <label id="entername" for="username">Name</label>
+      <input id="username" type="text" name="name" /><br /><br />
+      <label id="enteremail" for="email">Email</label>
+      <input id="email" type="text" name="email" /><br /><br />
+      <label id="enterage" for="age">Age</label>
+      <input id="age" type="text" name="age" /><br /><br />
+      <label for="dropbox">Your programming skill is ...</label>
+      <select class="textbox" id="dropbox">
+        <option value="" selected disabled hidden></option>
+        <option value="thegood">the good</option>
+        <option value="thebad">the bad</option>
+        <option value="theugly">the ugly</option>
+      </select>
+      <br /><br />
+      <label>You like designing ...</label>
+      <input
+        type="radio"
+        name="radios"
+        id="scratch"
+        name="opinion"
+        value="scratch"
+      />
+      <label for="scratch">from a scratch</label>
+      <input type="radio" name="radios" id="cp" name="opinion" value="cp" />
+      <label for="cp">copy-paste</label>
+      <input
+        type="radio"
+        name="radios"
+        id="friend"
+        name="opinion"
+        value="friend"
+      />
+      <label for="friend">ask for a friend</label>
+      <br /><br />
+      <label>What you're up to?</label>
+      <input type="checkbox" id="learn" name="upto" value="learn" />
+      <label for="learn">Learn</label>
+      <input type="checkbox" id="passtime" name="upto" value="passtime" />
+      <label for="passtime">Pass Time</label>
+      <input type="checkbox" id="nothing" name="upto" value="nothing" />
+      <label for="nothing">Nothing</label>
+      <br /><br />
+      <label for="feedback"></label>
+      <textarea id="feedback" rows="5" cols="50"></textarea>
+      <br /><br />
+      <input type="submit" id="send" onclick="main()" value="Send" />
+    </form>
+  </body>
+</html>
