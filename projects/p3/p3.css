@@ -1,0 +1,40 @@
+.base {
+  max-width: 400px;
+  margin: 40px auto 0 auto;
+}
+
+#screen {
+  text-align: right;
+  height: 70px;
+  line-height: 70px;
+  padding: 16px 8px;
+  font-size: 25px;
+  border-left: solid 2px black;
+  border-top: solid 2px black;
+  border-right: solid 2px black;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  border: 1px solid black;
+}
+
+.button {
+  border: 0.5px solid #999;
+  line-height: 100px;
+  text-align: center;
+  font-size: 25px;
+  cursor: pointer;
+}
+
+#total {
+  background-color: rgb(85, 85, 155);
+  color: white;
+  grid-column: span 2;
+}
+
+.button:hover {
+  background-color: rgb(85, 85, 155);
+  color: white;
+}
