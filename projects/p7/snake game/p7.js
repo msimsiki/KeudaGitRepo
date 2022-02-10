@@ -25,9 +25,6 @@ var trail = [];
 var ax = ay = 15;
 var score = 0;
 
-//Swipe gestures
-var xdown = ydown = null;
-
 function main() {
 	canvas = document.getElementById("canvas"); //canvas pulled from html
 	ctx = canvas.getContext("2d"); //canvas is 2d
@@ -38,75 +35,8 @@ function main() {
 	sy = Math.floor(gh / 2);
 	window.addEventListener("resize", resizegame); //fitting game to the device screen
 	document.addEventListener("keydown", keypress); //watch for keypress if opened on pc/laptop/wireless keyboard
-	canvas.addEventListener("touchstart", touchdown, false); //first touch start
-	canvas.addEventListener("touchmove", touchmove, false); //touch to move the snake
 	pauseButton.addEventListener("click", togglepause); //when play-pause button clicked
 	start();
-}
-
-function touchdown(e) {
-	const firsttouch = e.touches[0];
-	xdown = firsttouch.clientX;
-	ydown = firsttouch.clientY;
-}
-
-function touchmove(e) {
-	if (!xdown || !ydown) {
-		return;
-	}
-	var xup = e.touches[0].clientX;
-	var yup = e.touches[0].clientY;
-	var xdiff = xdown - xup;
-	var ydiff = ydown - yup;
-	var direction;
-	if (Math.abs(xdiff) > Math.abs(ydiff)) {
-		if (xdiff > 0) {
-			direction = "left";
-		} else {
-			direction = "right";
-		}
-	} else {
-		if (ydiff > 0) {
-			direction = "up";
-		} else {
-			direction = "down";
-		}
-	}
-	handleSwipe(direction);
-	xdown = ydown = null;
-}
-
-function handleSwipe(direction) {
-	switch (direction) {
-		case "left":
-			if (vx != 0) {
-				break;
-			}
-			vx = -1;
-			vy = 0;
-			break;
-		case "up":
-			if (vy != 0) {
-				break;
-			}
-			vx = 0;
-			vy = -1;
-			break;
-		case "right":
-			if (vx != 0) {
-				break;
-			}
-			vx = 1;
-			vy = 0;
-			break;
-		case "down":
-			if (vy != 0) {
-				break;
-			}
-			vx = 0;
-			vy = 1;
-			break;
-	}
 }
 
 function start() {
