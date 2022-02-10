@@ -1,4 +1,4 @@
-window.addEventListener("load", main);
+window.addEventListener("load", main); //when p7.html opened loads main function
 
 //Canvas
 var canvas;
@@ -25,7 +25,7 @@ var trail = [];
 var ax = ay = 15;
 var score = 0;
 
-function main() {
+function main() { //loads all content and then run start function
 	canvas = document.getElementById("canvas"); //canvas pulled from html
 	ctx = canvas.getContext("2d"); //canvas is 2d
 	pauseButton = document.getElementById("pause-button"); //google apis play-pause button pulled from html
@@ -36,41 +36,41 @@ function main() {
 	window.addEventListener("resize", resizegame); //fitting game to the device screen
 	document.addEventListener("keydown", keypress); //watch for keypress if opened on pc/laptop/wireless keyboard
 	pauseButton.addEventListener("click", togglepause); //when play-pause button clicked
-	start();
+	start(); //starts the game
 }
 
 function start() {
-	tail = 5;
-	trail = []
-	px = sx;
-	py = sy;
-	for (var i = 0; i < 5; i++) {
-		trail.push({x: px, y: py + 5 - i});
+	tail = 5; //tail size at the start as 5
+	trail = [] //no trail
+	px = sx; //how long distance snake can go at a time
+	py = sy; //how long distance snake can go at a time
+	for (var i = 0; i < 5; i++) { //adds x1 at a time when snake goes to forward
+		trail.push({x: px, y: py + 5 - i}); //removes the trail x1 at a time when snake goes forward
 	}
 	vx = 0;
 	vy = -1;
-	ax = Math.floor(Math.random() * gw);
-	ay = Math.floor(Math.random() * gh);
-	play();
+	ax = Math.floor(Math.random() * gw); //adds apple randomly
+	ay = Math.floor(Math.random() * gh); //add apple randomly
+	play(); //toggles play button to start the game until button clicked to pause the game
 }
 
 function update() {
 	px += vx;
 	py += vy;
 	if (px < 0 || px >= gw || py < 0 || py >= gh) {
-		die();
+		die(); //if snake crashes the white borders it dies
 	}
 	for (var i = 0; i < trail.length; i++) {
 		if (px == trail[i].x && py == trail[i].y) {
-			die();
+			die(); // if snake crashes to its own tail it dies
 		}
 	}
-	trail.push({x: px, y: py});
-	while (trail.length > tail) {
-		trail.shift();
+	trail.push({x: px, y: py}); //extending snake from the head
+	while (trail.length > tail) { //while
+		trail.shift(); //removing from the end
 	}
-	if (px == ax && py == ay) {
-		gotapple();
+	if (px == ax && py == ay) { //if snakes head is in the same spot with the apple
+		gotapple(); //snake gets the apple
 	}
 }
 
@@ -85,11 +85,11 @@ function render() {
 	}
 }
 
-function keypress(e) { //keypress for arrow keys
+function keypress(e) { //moves the snake up down left right with the arrow keys
 	if (timer == -1 && e.keyCode != 32) {
 		return;
 	}
-	switch (e.keyCode) {
+	switch (e.keyCode) { //when pause button clicked freezes the game
 		case 32:
 			togglepause();
 			break;
