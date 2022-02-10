@@ -29,18 +29,18 @@ var score = 0;
 var xdown = ydown = null;
 
 function main() {
-	canvas = document.getElementById("canvas");
-	ctx = canvas.getContext("2d");
-	pauseButton = document.getElementById("pause-button");
-	scorelabel = document.getElementById("score-label");
+	canvas = document.getElementById("canvas"); //canvas pulled from html
+	ctx = canvas.getContext("2d"); //canvas is 2d
+	pauseButton = document.getElementById("pause-button"); //google apis play-pause button pulled from html
+	scorelabel = document.getElementById("score-label"); //score label also pulled from html
 	resizegame();
 	sx = Math.floor(gw / 2);
 	sy = Math.floor(gh / 2);
-	window.addEventListener("resize", resizegame);
-	document.addEventListener("keydown", keypress);
-	canvas.addEventListener("touchstart", touchdown, false);
-	canvas.addEventListener("touchmove", touchmove, false);
-	pauseButton.addEventListener("click", togglepause);
+	window.addEventListener("resize", resizegame); //fitting game to the device screen
+	document.addEventListener("keydown", keypress); //watch for keypress if opened on pc/laptop/wireless keyboard
+	canvas.addEventListener("touchstart", touchdown, false); //first touch start
+	canvas.addEventListener("touchmove", touchmove, false); //touch to move the snake
+	pauseButton.addEventListener("click", togglepause); //when play-pause button clicked
 	start();
 }
 
@@ -145,17 +145,17 @@ function update() {
 }
 
 function render() {
-	ctx.fillStyle = "black";
-	ctx.fillRect(0, 0, canvas.width, canvas.height);
-	ctx.fillStyle = "red";
-	ctx.fillRect(ax * ts, ay * ts, ts - 2, ts - 2);
-	ctx.fillStyle = "dodgerblue";
+	ctx.fillStyle = "black"; //canvas color
+	ctx.fillRect(0, 0, canvas.width, canvas.height); //canvas size
+	ctx.fillStyle = "red"; //apple color
+	ctx.fillRect(ax * ts, ay * ts, ts - 2, ts - 2); //apple size on canvas
+	ctx.fillStyle = "dodgerblue"; //snake color
 	for (var i = 0; i < trail.length; i++) {
-		ctx.fillRect(trail[i].x * ts, trail[i].y * ts, ts - 2, ts - 2);
+		ctx.fillRect(trail[i].x * ts, trail[i].y * ts, ts - 2, ts - 2); //snake trail size will be extended if snake gets apple
 	}
 }
 
-function keypress(e) {
+function keypress(e) { //keypress for arrow keys
 	if (timer == -1 && e.keyCode != 32) {
 		return;
 	}
@@ -194,51 +194,51 @@ function keypress(e) {
 	}
 }
 
-function gotapple() {
-	tail++;
-	score++;
-	scorelabel.innerHTML = "Score: " + score;
-	ax = Math.floor(Math.random() * gw);
-	ay = Math.floor(Math.random() * gh);
+function gotapple() { //when snake gets apple
+	tail++; //taill gets extended as 2 size
+	score++; // also player gets 1 point for each apple
+	scorelabel.innerHTML = "Score: " + score; //show the score on html canvas
+	ax = Math.floor(Math.random() * gw); //randomly placing apple on canvas - vertical
+	ay = Math.floor(Math.random() * gh); //randomly placing apple on canvas - horizontal
 }
 
-function die() {
-	score = 0;
-	scorelabel.innerHTML = "Score: 0";
-	tail = 5;
-	trail = []
+function die() { //when snake crash
+	score = 0; //score resets
+	scorelabel.innerHTML = "Score: 0"; //show resetted score on html canvas
+	tail = 5; //tail size resets and starts from 5 again
+	trail = [] //no trail
 	px = sx;
 	py = sy;
-	for (var i = 0; i < 5; i++) {
+	for (var i = 0; i < 5; i++) { //standard snake size set to 5, if snake gets apple its size gonna be pushed
 		trail.push({x: px, y: py + 5 - i});
 	}
 	vx = 0;
 	vy = -1;
 }
 
-function pause() {
+function pause() { //when pause button clicked
 	clearInterval(timer);
-	timer = -1;
+	timer = -1; //game stops
 	pauseButton.innerHTML = "play_circle_outline";
 }
 
-function play() {
+function play() { //when play button clicked
 	timer = setInterval(function() {
-		update();
-		render();
-	}, 1000 / fps);
+		update(); //update the content when play clicked
+		render(); //render the content when play clicked
+	}, 1000 / fps); //duration
 	pauseButton.innerHTML = "pause_circle_outline";
 }
 
-function togglepause() {
-	if (timer == -1) {
-		play();
-	} else {
-		pause();
+function togglepause() { //freeze the timer (also game) when pause clicked
+	if (timer == -1) { //condition when button clicked
+		play(); //play it
+	} else { //or
+		pause(); //keep it paused
 	}
 }
 
-function resizegame() {
+function resizegame() { //arranging canvas size to fit the screen
 	canvas.width = window.innerWidth - 2;
 	canvas.height = window.innerHeight - 2;
 	gw = Math.floor(canvas.width / ts);
