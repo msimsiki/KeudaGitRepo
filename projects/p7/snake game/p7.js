@@ -149,7 +149,7 @@ function render() {
 	ctx.fillRect(0, 0, canvas.width, canvas.height);
 	ctx.fillStyle = "red";
 	ctx.fillRect(ax * ts, ay * ts, ts - 2, ts - 2);
-	ctx.fillStyle = "lime";
+	ctx.fillStyle = "dodgerblue";
 	for (var i = 0; i < trail.length; i++) {
 		ctx.fillRect(trail[i].x * ts, trail[i].y * ts, ts - 2, ts - 2);
 	}
